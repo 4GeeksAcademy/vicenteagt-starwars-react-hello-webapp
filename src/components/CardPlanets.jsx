@@ -1,15 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useGlobalReducer from "../hooks/useGlobalReducer";
 
 const CardPlanets = ({ planet }) => {
 
+    const { store, dispatch } = useGlobalReducer();
+
     const properties = planet.properties;
+
+    
+    const isFavorite = store.favorites.some(
+        fav => fav.uid === planet.uid
+    );
 
     return (
         <div 
-    className="card me-3 d-flex flex-column"
-    style={{ minWidth: "250px", height: "420px" }}
->
+            className="card me-3 d-flex flex-column"
+            style={{ minWidth: "250px", height: "420px" }}
+        >
 
             <img
                 src="https://picsum.photos/300/200"
@@ -17,7 +25,7 @@ const CardPlanets = ({ planet }) => {
                 alt="planet"
             />
 
-           <div className="card-body d-flex flex-column">
+            <div className="card-body d-flex flex-column">
 
                 <h4 className="fw-bold">{properties.name}</h4>
 
@@ -26,11 +34,33 @@ const CardPlanets = ({ planet }) => {
 
                 <div className="mt-auto d-flex justify-content-between">
 
-                    <Link to={`/planet/${planet.uid}`} className="btn btn-outline-primary btn-sm">
-    Learn more!
-</Link>
+                    <Link 
+                        to={`/planet/${planet.uid}`} 
+                        className="btn btn-outline-primary btn-sm"
+                    >
+                        Learn more!
+                    </Link>
 
-                    <button className="btn btn-outline-warning btn-sm">
+               
+                    <button
+                        className={`btn btn-sm ${
+                            isFavorite ? "btn-warning" : "btn-outline-warning"
+                        }`}
+                        onClick={() =>
+                            isFavorite
+                                ? dispatch({
+                                    type: "removeFavorite",
+                                    payload: planet.uid
+                                })
+                                : dispatch({
+                                    type: "addFavorite",
+                                    payload: {
+                                        uid: planet.uid,
+                                        name: properties.name
+                                    }
+                                })
+                        }
+                    >
                         <i className="fa-solid fa-heart"></i>
                     </button>
 
