@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
+import planetsImageUrl from "../assets/img/planets.jpg";
 
 const CardPlanets = ({ planet }) => {
 
@@ -8,19 +9,19 @@ const CardPlanets = ({ planet }) => {
 
     const properties = planet.properties;
 
-    
+
     const isFavorite = store.favorites.some(
         fav => fav.uid === planet.uid
     );
 
     return (
-        <div 
+        <div
             className="card me-3 d-flex flex-column"
             style={{ minWidth: "250px", height: "420px" }}
         >
 
             <img
-                src="https://picsum.photos/300/200"
+                src={planetsImageUrl}
                 className="card-img-top"
                 alt="planet"
             />
@@ -34,29 +35,32 @@ const CardPlanets = ({ planet }) => {
 
                 <div className="mt-auto d-flex justify-content-between">
 
-                    <Link 
-                        to={`/planet/${planet.uid}`} 
+                    <Link
+                        to={`/planet/${planet.uid}`}
                         className="btn btn-outline-primary btn-sm"
                     >
                         Learn more!
                     </Link>
 
-               
+
                     <button
-                        className={`btn btn-sm ${
-                            isFavorite ? "btn-warning" : "btn-outline-warning"
-                        }`}
+                        className={`btn btn-sm ${isFavorite ? "btn-warning" : "btn-outline-warning"
+                            }`}
                         onClick={() =>
                             isFavorite
                                 ? dispatch({
                                     type: "removeFavorite",
-                                    payload: planet.uid
+                                    payload: {
+                                        uid: planet.uid,
+                                        type: "planet"
+                                    }
                                 })
                                 : dispatch({
                                     type: "addFavorite",
                                     payload: {
                                         uid: planet.uid,
-                                        name: properties.name
+                                        name: properties.name,
+                                        type: "planet"
                                     }
                                 })
                         }

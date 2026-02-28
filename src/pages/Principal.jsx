@@ -10,7 +10,7 @@ export const Principal = () => {
 
     const API_URL = "https://www.swapi.tech/api";
 
-    
+
     const getCharacters = async () => {
 
         const response = await fetch(API_URL + "/people");
@@ -55,7 +55,7 @@ export const Principal = () => {
     };
 
 
-   
+
     const getVehicles = async () => {
 
         const response = await fetch(API_URL + "/vehicles");
@@ -86,42 +86,42 @@ export const Principal = () => {
 
 
     return (
-    <div className="container mt-5">
+        <div className="container mt-5">
 
-       
-        <h2 className="mb-3">Characters</h2>
-        <div className="d-flex overflow-auto mb-5">
-            {store.characters.map((character, index) => (
-                <CardCharacters
-                    key={index}
-                    character={character}
-                />
-            ))}
+
+            <h2 className="mb-3">Characters</h2>
+            <div className="d-flex overflow-auto mb-5">
+                {store.characters.map((character, index) => (
+                    <CardCharacters
+                        key={index}
+                        character={character}
+                    />
+                ))}
+            </div>
+
+
+            <h2 className="mb-3">Planets</h2>
+            <div className="d-flex overflow-auto mb-5">
+                {store.planets.map((planet, index) => (
+                    <CardPlanets
+                        key={index}
+                        planet={planet}
+                    />
+                ))}
+            </div>
+
+
+            <h2 className="mb-3">Vehicles</h2>
+            <div className="d-flex overflow-auto mb-5">
+                {store.vehicles.map((vehicle, index) => (
+                    <CardVehicles
+                        key={index}
+                        vehicle={vehicle}
+                    />
+                ))}
+            </div>
+
         </div>
-
-      
-        <h2 className="mb-3">Planets</h2>
-        <div className="d-flex overflow-auto mb-5">
-            {store.planets.map((planet, index) => (
-                <CardPlanets
-                    key={index}
-                    planet={planet}
-                />
-            ))}
-        </div>
-
-       
-        <h2 className="mb-3">Vehicles</h2>
-       <div className="d-flex overflow-auto mb-5">
-            {store.vehicles.map((vehicle, index) => (
-                <CardVehicles
-                    key={index}
-                    vehicle={vehicle}
-                />
-            ))}
-        </div>
-
-    </div>
-);
+    );
 
 };

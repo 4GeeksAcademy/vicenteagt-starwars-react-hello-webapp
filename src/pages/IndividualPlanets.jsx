@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import planetsInvidualImageUrl from "../assets/img/planetsIndividual.jpg";
 
 export const IndividualPlanets = () => {
 
@@ -30,29 +31,29 @@ export const IndividualPlanets = () => {
 
             <div className="row align-items-center mb-5">
 
-                {/* Imagen izquierda */}
+
                 <div className="col-md-6">
                     <img
-                        src="https://picsum.photos/800/400"
+                        src={planetsInvidualImageUrl}
                         className="img-fluid"
                         alt="planet"
                     />
                 </div>
 
-               
+
                 <div className="col-md-6">
 
                     <h1 className="fw-bold">{planet.name}</h1>
 
                     <p>
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eius rerum eveniet cupiditate atque, expedita qui. Nobis neque repellendus animi iusto rerum velit modi! Nemo soluta labore necessitatibus est quibusdam!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam eius rerum eveniet cupiditate atque, expedita qui. Nobis neque repellendus animi iusto rerum velit modi! Nemo soluta labore necessitatibus est quibusdam!
                     </p>
 
                 </div>
 
             </div>
 
-           
+
             <div className="row text-center text-danger border-top pt-4">
 
                 <div className="col">

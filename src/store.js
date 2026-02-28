@@ -1,5 +1,5 @@
-export const initialStore=()=>{
-  return{
+export const initialStore = () => {
+  return {
     message: null,
     todos: [
       {
@@ -21,23 +21,23 @@ export const initialStore=()=>{
 }
 
 export default function storeReducer(store, action = {}) {
-  switch(action.type){
+  switch (action.type) {
     case 'add_task':
 
-      const { id,  color } = action.payload
+      const { id, color } = action.payload
 
       return {
         ...store,
         todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
       };
-    
-      case "setCharacters":
+
+    case "setCharacters":
       return {
         ...store,
         characters: action.payload
       };
-      
-      case "setPlanets":
+
+    case "setPlanets":
       return {
         ...store,
         planets: action.payload
@@ -49,25 +49,36 @@ export default function storeReducer(store, action = {}) {
         vehicles: action.payload
       };
 
-      case "addFavorite":
-  if (store.favorites.find(fav => fav.uid === action.payload.uid)) {
-    return store;
-  }
+    case "addFavorite":
+      if (
+        store.favorites.find(
+          fav =>
+            fav.uid === action.payload.uid &&
+            fav.type === action.payload.type
+        )
+      ) {
+        return store;
+      }
 
-  return {
-    ...store,
-    favorites: [...store.favorites, action.payload]
-  };
+      return {
+        ...store,
+        favorites: [...store.favorites, action.payload]
+      };
 
-case "removeFavorite":
-  return {
-    ...store,
-    favorites: store.favorites.filter(
-      fav => fav.uid !== action.payload
-    )
-  };
+    case "removeFavorite":
+      return {
+        ...store,
+        favorites: store.favorites.filter(
+          fav =>
+            !(
+              fav.uid === action.payload.uid &&
+              fav.type === action.payload.type
+            )
+        )
+      };
+
 
     default:
       return store;
-  }    
+  }
 }

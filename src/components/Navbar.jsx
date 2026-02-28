@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
+import nabvarImageUrl from "../assets/img/iconoNabvar.jpg";
 
 export const Navbar = () => {
 
@@ -11,7 +12,7 @@ export const Navbar = () => {
 
       <Link to="/">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Star_Wars_Logo.svg"
+          src={nabvarImageUrl}
           style={{ width: "90px" }}
           alt="logo"
         />

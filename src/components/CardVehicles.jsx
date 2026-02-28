@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
+import vehiclesImageUrl from "../assets/img/vehicles.jpg";
 
 const CardVehicles = ({ vehicle }) => {
 
@@ -8,19 +9,19 @@ const CardVehicles = ({ vehicle }) => {
 
     const properties = vehicle.properties;
 
-   
+
     const isFavorite = store.favorites.some(
         fav => fav.uid === vehicle.uid
     );
 
     return (
-        <div 
+        <div
             className="card me-3 d-flex flex-column"
             style={{ minWidth: "250px", height: "420px" }}
         >
 
             <img
-                src="https://picsum.photos/300/200"
+                src={vehiclesImageUrl}
                 className="card-img-top"
                 alt="vehicle"
             />
@@ -35,32 +36,35 @@ const CardVehicles = ({ vehicle }) => {
 
                 <p className="mb-3">
                     Speed: {properties.max_atmosphering_speed}
-                </p> 
+                </p>
 
                 <div className="mt-auto d-flex justify-content-between">
 
-                    <Link 
-                        to={`/vehicle/${vehicle.uid}`} 
+                    <Link
+                        to={`/vehicle/${vehicle.uid}`}
                         className="btn btn-outline-primary btn-sm"
                     >
                         Learn more!
                     </Link>
 
                     <button
-                        className={`btn btn-sm ${
-                            isFavorite ? "btn-warning" : "btn-outline-warning"
-                        }`}
+                        className={`btn btn-sm ${isFavorite ? "btn-warning" : "btn-outline-warning"
+                            }`}
                         onClick={() =>
                             isFavorite
                                 ? dispatch({
                                     type: "removeFavorite",
-                                    payload: vehicle.uid
+                                    payload: {
+                                        uid: vehicle.uid,
+                                        type: "vehicle"
+                                    }
                                 })
                                 : dispatch({
                                     type: "addFavorite",
                                     payload: {
                                         uid: vehicle.uid,
-                                        name: properties.name
+                                        name: properties.name,
+                                        type: "vehicle"
                                     }
                                 })
                         }

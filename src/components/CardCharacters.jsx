@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
+import characterImageUrl from "../assets/img/characters.jpg";
 
 const CardCharacters = ({ character }) => {
 
@@ -13,13 +14,13 @@ const CardCharacters = ({ character }) => {
     );
 
     return (
-        <div 
+        <div
             className="card me-3 d-flex flex-column"
             style={{ minWidth: "250px", height: "420px" }}
         >
 
             <img
-                src="https://picsum.photos/300/200"
+                src={characterImageUrl}
                 className="card-img-top"
                 alt="character"
             />
@@ -36,29 +37,32 @@ const CardCharacters = ({ character }) => {
 
                 <div className="mt-auto d-flex justify-content-between">
 
-                    <Link 
-                        to={`/character/${character.uid}`} 
+                    <Link
+                        to={`/character/${character.uid}`}
                         className="btn btn-outline-primary btn-sm"
                     >
                         Learn more!
                     </Link>
 
-               
+
                     <button
-                        className={`btn btn-sm ${
-                            isFavorite ? "btn-warning" : "btn-outline-warning"
-                        }`}
+                        className={`btn btn-sm ${isFavorite ? "btn-warning" : "btn-outline-warning"
+                            }`}
                         onClick={() =>
                             isFavorite
                                 ? dispatch({
                                     type: "removeFavorite",
-                                    payload: character.uid
+                                    payload: {
+                                        uid: character.uid,
+                                        type: "character"
+                                    }
                                 })
                                 : dispatch({
                                     type: "addFavorite",
                                     payload: {
                                         uid: character.uid,
-                                        name: properties.name
+                                        name: properties.name,
+                                        type: "character"
                                     }
                                 })
                         }

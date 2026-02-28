@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import vehiclesInvidualImageUrl from "../assets/img/vehiclesIndividual.jpg";
 
 export const IndividualVehicles = () => {
 
@@ -30,29 +31,29 @@ export const IndividualVehicles = () => {
 
             <div className="row align-items-center mb-5">
 
-                {/* Imagen izquierda */}
+
                 <div className="col-md-6">
                     <img
-                        src="https://picsum.photos/800/400"
+                        src={vehiclesInvidualImageUrl}
                         className="img-fluid"
                         alt="vehicle"
                     />
                 </div>
 
-                {/* Info derecha */}
+
                 <div className="col-md-6">
 
                     <h1 className="fw-bold">{vehicle.name}</h1>
 
                     <p>
-                        Lorem ipsum dolor sit amet consectetur.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus fugit quae accusantium dolorem consequatur aperiam reprehenderit nobis eius, maxime, dolorum, quasi ullam dolores. Qui dignissimos quia velit ipsa blanditiis eum?
                     </p>
 
                 </div>
 
             </div>
 
-            {/* Footer horizontal rojo */}
+
             <div className="row text-center text-danger border-top pt-4">
 
                 <div className="col">

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import characterInvidualImageUrl from "../assets/img/charactersIndividual.jpg";
 
 export const IndividualCharacters = () => {
 
@@ -30,16 +31,16 @@ export const IndividualCharacters = () => {
 
             <div className="row align-items-center mb-5">
 
-                {/* Imagen izquierda */}
+
                 <div className="col-md-6">
                     <img
-                        src="https://picsum.photos/800/400"
+                        src={characterInvidualImageUrl}
                         className="img-fluid"
                         alt="character"
                     />
                 </div>
 
-              
+
                 <div className="col-md-6">
 
                     <h2 className="fw-bold">{character.name}</h2>
@@ -52,7 +53,7 @@ export const IndividualCharacters = () => {
 
             </div>
 
-          
+
             <div className="row text-center text-danger border-top pt-4">
 
                 <div className="col">
