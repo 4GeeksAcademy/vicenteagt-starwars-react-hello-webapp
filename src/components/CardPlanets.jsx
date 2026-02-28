@@ -11,8 +11,10 @@ const CardPlanets = ({ planet }) => {
 
 
     const isFavorite = store.favorites.some(
-        fav => fav.uid === planet.uid
-    );
+    fav =>
+        fav.uid === planet.uid &&
+        fav.type === "planet"
+);
 
     return (
         <div

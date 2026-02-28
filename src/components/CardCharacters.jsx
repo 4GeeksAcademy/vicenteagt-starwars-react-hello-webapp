@@ -10,8 +10,10 @@ const CardCharacters = ({ character }) => {
     const properties = character.properties;
 
     const isFavorite = store.favorites.some(
-        fav => fav.uid === character.uid
-    );
+    fav =>
+        fav.uid === character.uid &&
+        fav.type === "character"
+);
 
     return (
         <div

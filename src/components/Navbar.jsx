@@ -45,9 +45,12 @@ export const Navbar = () => {
                   style={{ cursor: "pointer" }}
                   onClick={() =>
                     dispatch({
-                      type: "removeFavorite",
-                      payload: fav.uid
-                    })
+      type: "removeFavorite",
+      payload: {
+        uid: fav.uid,
+        type: fav.type
+      }
+    })
                   }
                 ></i>
               </li>

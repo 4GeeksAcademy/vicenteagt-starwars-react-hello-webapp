@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import planetsInvidualImageUrl from "../assets/img/planetsIndividual.jpg";
+import planetsInvidualImageUrl from "../assets/img/planetsInvidual.jpg";
 
 export const IndividualPlanets = () => {
 

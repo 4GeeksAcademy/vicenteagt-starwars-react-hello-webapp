@@ -10,9 +10,11 @@ const CardVehicles = ({ vehicle }) => {
     const properties = vehicle.properties;
 
 
-    const isFavorite = store.favorites.some(
-        fav => fav.uid === vehicle.uid
-    );
+   const isFavorite = store.favorites.some(
+    fav =>
+        fav.uid === vehicle.uid &&
+        fav.type === "vehicle"
+);
 
     return (
         <div
