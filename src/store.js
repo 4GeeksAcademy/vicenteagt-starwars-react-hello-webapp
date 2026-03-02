@@ -50,20 +50,19 @@ export default function storeReducer(store, action = {}) {
       };
 
     case "addFavorite":
-      if (
-        store.favorites.find(
-          fav =>
-            fav.uid === action.payload.uid &&
-            fav.type === action.payload.type
-        )
-      ) {
-        return store;
-      }
 
-      return {
-        ...store,
-        favorites: [...store.favorites, action.payload]
-      };
+  const exists = store.favorites.some(
+    fav =>
+      fav.uid === action.payload.uid &&
+      fav.type === action.payload.type
+  );
+
+  if (exists) return store;
+
+  return {
+    ...store,
+    favorites: [...store.favorites, action.payload]
+  };
 
     case "removeFavorite":
       return {

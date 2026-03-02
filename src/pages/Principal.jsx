@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer";
-import CardCharacters from "../components/CardCharacters";
-import CardPlanets from "../components/CardPlanets";
-import CardVehicles from "../components/CardVehicles";
+import {CardCharacters} from "../components/CardCharacters";
+import {CardPlanets} from "../components/CardPlanets";
+import {CardVehicles} from "../components/CardVehicles";
 
 export const Principal = () => {
 
@@ -91,34 +91,48 @@ export const Principal = () => {
 
             <h2 className="mb-3">Characters</h2>
             <div className="d-flex overflow-auto mb-5">
-                {store.characters.map((character, index) => (
-                    <CardCharacters
-                        key={index}
-                        character={character}
-                    />
-                ))}
+                {store.characters.length === 0 ? (
+                    <p className="ms-3">Loading Characters...</p>
+                ) : (
+                    store.characters.map((character) => (
+                        <CardCharacters
+                            key={character.uid}
+                            character={character}
+                        />
+                    ))
+                )}
             </div>
 
 
             <h2 className="mb-3">Planets</h2>
             <div className="d-flex overflow-auto mb-5">
-                {store.planets.map((planet, index) => (
-                    <CardPlanets
-                        key={index}
-                        planet={planet}
-                    />
-                ))}
+
+                {store.planets.length === 0 ? (
+                    <p className="ms-3">Loading Planets...</p>
+                ) : (
+                    store.planets.map((planet) => (
+                        <CardPlanets
+                            key={planet.uid}
+                            planet={planet}
+                        />
+                    ))
+                )}
             </div>
 
 
             <h2 className="mb-3">Vehicles</h2>
             <div className="d-flex overflow-auto mb-5">
-                {store.vehicles.map((vehicle, index) => (
-                    <CardVehicles
-                        key={index}
-                        vehicle={vehicle}
-                    />
-                ))}
+
+                {store.vehicles.length === 0 ? (
+                    <p className="ms-3">Loading Vehicles...</p>
+                ) : (
+                    store.vehicles.map((vehicle) => (
+                        <CardVehicles
+                            key={vehicle.uid}
+                            vehicle={vehicle}
+                        />
+                    ))
+                )}
             </div>
 
         </div>

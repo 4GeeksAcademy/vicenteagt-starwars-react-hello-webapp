@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 import vehiclesImageUrl from "../assets/img/vehicles.jpg";
 
-const CardVehicles = ({ vehicle }) => {
+export const CardVehicles = ({ vehicle }) => {
 
     const { store, dispatch } = useGlobalReducer();
 
@@ -58,6 +58,7 @@ const CardVehicles = ({ vehicle }) => {
                                     type: "removeFavorite",
                                     payload: {
                                         uid: vehicle.uid,
+                                        name: properties.name,
                                         type: "vehicle"
                                     }
                                 })
@@ -81,4 +82,3 @@ const CardVehicles = ({ vehicle }) => {
     );
 };
 
-export default CardVehicles;

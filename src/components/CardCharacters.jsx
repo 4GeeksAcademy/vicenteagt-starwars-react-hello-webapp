@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 import characterImageUrl from "../assets/img/characters.jpg";
 
-const CardCharacters = ({ character }) => {
+export const CardCharacters = ({ character }) => {
 
     const { store, dispatch } = useGlobalReducer();
 
@@ -56,6 +56,7 @@ const CardCharacters = ({ character }) => {
                                     type: "removeFavorite",
                                     payload: {
                                         uid: character.uid,
+                                        name: properties.name,
                                         type: "character"
                                     }
                                 })
@@ -79,4 +80,3 @@ const CardCharacters = ({ character }) => {
     );
 };
 
-export default CardCharacters;

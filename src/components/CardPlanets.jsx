@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";
 import planetsImageUrl from "../assets/img/planets.jpg";
 
-const CardPlanets = ({ planet }) => {
+export const CardPlanets = ({ planet }) => {
 
     const { store, dispatch } = useGlobalReducer();
 
@@ -54,6 +54,7 @@ const CardPlanets = ({ planet }) => {
                                     type: "removeFavorite",
                                     payload: {
                                         uid: planet.uid,
+                                        name: properties.name,
                                         type: "planet"
                                     }
                                 })
@@ -77,4 +78,3 @@ const CardPlanets = ({ planet }) => {
     );
 };
 
-export default CardPlanets;
